@@ -45,7 +45,7 @@ window.onload=function(){
         ctx.fillRect(0, 0, 129, 129);
         if(lastStr2==""){
             ctx.font = "128px Unknown Font";
-            if(curBold){
+            if(lastBold){
                 ctx.font = "bold 128px Unknown Font";
             }
             ctx.fillStyle = ftc;
@@ -53,7 +53,7 @@ window.onload=function(){
         }
         else{
             ctx.font = "62px Unknown Font";
-            if(curBold){
+            if(lastBold){
                 ctx.font = "bold 128px Unknown Font";
             }
             ctx.fillStyle = ftc;
