@@ -28,25 +28,34 @@ window.onload=function(){
     }, false);
     var lastStr = "";
     var lastStr2 = "";
+    var lastBold = true;
     function loop(){
         var curStr = document.forms.src.str.value;
         var curStr2 = document.forms.src.str2.value;
         var curBgc = document.forms.colorForm.bgc.value;
         var curFtc = document.forms.colorForm.ftc.value;
-        if(curStr==lastStr && curStr2==lastStr2 && curBgc==bgc && curFtc==ftc)return;
+        var curBold = document.forms.colorForm.bold.checked;
+        if(curStr==lastStr && curStr2==lastStr2 && curBgc==bgc && curFtc==ftc && curBold==lastBold)return;
         lastStr=curStr;
         lastStr2=curStr2;
         bgc = curBgc;
         ftc = curFtc;
+        lastBold = curBold;
         ctx.fillStyle = bgc;
         ctx.fillRect(0, 0, 129, 129);
         if(lastStr2==""){
             ctx.font = "128px Unknown Font";
+            if(curBold){
+                ctx.font = "bold 128px Unknown Font";
+            }
             ctx.fillStyle = ftc;
             ctx.fillText(curStr,4,110,120);
         }
         else{
             ctx.font = "62px Unknown Font";
+            if(curBold){
+                ctx.font = "bold 128px Unknown Font";
+            }
             ctx.fillStyle = ftc;
             ctx.fillText(curStr,4,57,120);
             ctx.fillText(curStr2,4,112,120);
