@@ -2,6 +2,8 @@ var canvas;
 var ctx;
 var img = new Image();
 var imgFlg = 0;
+var bgc = "";
+var ftc = "";
 
 window.onload=function(){
     canvas = document.createElement('canvas');
@@ -29,19 +31,23 @@ window.onload=function(){
     function loop(){
         var curStr = document.forms.src.str.value;
         var curStr2 = document.forms.src.str2.value;
-        if(curStr==lastStr && curStr2==lastStr2)return;
+        var curBgc = document.forms.colorForm.bgc.value;
+        var curFtc = document.forms.colorForm.ftc.value;
+        if(curStr==lastStr && curStr2==lastStr2 && curBgc==bgc && curFtc==ftc)return;
         lastStr=curStr;
         lastStr2=curStr2;
-        ctx.fillStyle = "rgb(255, 255, 255)";
+        bgc = curBgc;
+        ftc = curFtc;
+        ctx.fillStyle = bgc;
         ctx.fillRect(0, 0, 129, 129);
         if(lastStr2==""){
             ctx.font = "128px Unknown Font";
-            ctx.fillStyle = "rgb(0, 0, 0)";
+            ctx.fillStyle = ftc;
             ctx.fillText(curStr,4,110,120);
         }
         else{
             ctx.font = "62px Unknown Font";
-            ctx.fillStyle = "rgb(0, 0, 0)";
+            ctx.fillStyle = ftc;
             ctx.fillText(curStr,4,57,120);
             ctx.fillText(curStr2,4,112,120);
         }
@@ -51,6 +57,8 @@ window.onload=function(){
 }
 
 function fromImg(){
+    ctx.fillStyle = bgc;
+    ctx.fillRect(0, 0, 129, 129);
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     document.getElementById("output").innerHTML = "<img src='" + canvas.toDataURL() + "'></br>";
 }
