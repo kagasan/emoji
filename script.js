@@ -54,7 +54,7 @@ window.onload=function(){
         else{
             ctx.font = "62px Unknown Font";
             if(lastBold){
-                ctx.font = "bold 128px Unknown Font";
+                ctx.font = "bold 62px Unknown Font";
             }
             ctx.fillStyle = ftc;
             ctx.fillText(curStr,4,57,120);
